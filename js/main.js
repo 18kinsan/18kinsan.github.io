@@ -1,4 +1,15 @@
 $(document).ready(function(){
+
+        var networkDataReceive = false;
+        //cek di cache, apakah sudah ada belum, ambil data dar service online
+        var networkUpdate = fetch(_url).then(function(response){
+            return response.json();
+        }).then(function(data){
+            networkDataReceive = true;
+            renderPage(data);
+        });
+    
+        
     
         //belajar notifikasi
         Notification.requestPermission(function(status){
