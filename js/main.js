@@ -1,16 +1,5 @@
 $(document).ready(function(){
 
-        var networkDataReceive = false;
-        //cek di cache, apakah sudah ada belum, ambil data dar service online
-        var networkUpdate = fetch(_url).then(function(response){
-            return response.json();
-        }).then(function(data){
-            networkDataReceive = true;
-            renderPage(data);
-        });
-    
-        
-    
         //belajar notifikasi
         Notification.requestPermission(function(status){
             console.log('Notification permission status : ',status);
@@ -40,14 +29,17 @@ $(document).ready(function(){
             displayNotification();
         })
     });     
-    if('serviceWorker' in navigator){
-        window.addEventListener('load',function(){
-            navigator.serviceWorker.register('/serviceworker.js').then(function(reg){
-                console.log('SW regis sukses dengan skop',reg.scope)
-                }, 
-                    function(err){
-                    console.log('sw regis failed',err);
-            })
+    f ('serviceWorker' in navigator){
+        window.addEventListener('load', function () {
+            navigator.serviceWorker.register('/serviceworker.js').then(
+                function (reg) {
+                    // registerasi service worker berhasil
+                    console.log('SW registration success, scope :',reg.scope);
+                }, function (err) {
+                    // reg failed
+                    console.log('SW registration faild : ', err);
+                }
+            )
         })
-    } 
+    }
     

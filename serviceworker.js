@@ -6,7 +6,6 @@ var urlToCache = [
     '/css/all.css',
     '/css/bootstrap.min.css',   
     '/images/pistel.jpg',
-    '/manifest.json',
     '/js/all.js',
     '/js/bootstrap.js',
     '/js/jquery.min.js',
