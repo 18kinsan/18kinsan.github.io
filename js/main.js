@@ -29,17 +29,14 @@ $(document).ready(function(){
             displayNotification();
         })
     });     
-    f ('serviceWorker' in navigator){
-        window.addEventListener('load', function () {
-            navigator.serviceWorker.register('/serviceworker.js').then(
-                function (reg) {
-                    // registerasi service worker berhasil
-                    console.log('SW registration success, scope :',reg.scope);
-                }, function (err) {
-                    // reg failed
-                    console.log('SW registration faild : ', err);
-                }
-            )
+    if('serviceWorker' in navigator){
+        window.addEventListener('load',function(){
+            navigator.serviceWorker.register('/serviceworker.js').then(function(reg){
+                console.log('SW regis sukses dengan skop',reg.scope)
+                }, 
+                    function(err){
+                    console.log('sw regis failed',err);
+            })
         })
-    }
+    } 
     
